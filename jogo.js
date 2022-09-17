@@ -1,3 +1,7 @@
+var rodada = 1;
+var matriz = Array(3);
+
+
 $(document).ready( function(){
 
     $('#btn_iniciar_jogo').click( function(){
@@ -17,9 +21,38 @@ $(document).ready( function(){
         $('#nome_jogador_1').html($('#entrada_apelido_jogador_1').val());
         $('#nome_jogador_2').html($('#entrada_apelido_jogador_2').val());
 
-
+        //controla visualização das Divs
+        $('#pagina_inicial').hide();
+        $('#palco_jogo').show();
 
     });
+
+    $('.jogada').click( function(){
+       
+        var id_campo_clicado = this.id;
+        jogada(id_campo_clicado);
+
+    });
+
+    function jogada(id){
+        var icone = '';
+        var ponto = 0;
+
+        if((rodada % 2) == 1){
+            icone = 'url("imagens/marcacao_1.png")';
+            ponto = -1;
+           
+        } else {
+            icone = 'url("imagens/marcacao_2.png")';
+            ponto = 1;
+            
+
+        }
+        
+        rodada++;
+
+        $('#'+id).css('background-image', 'icone');
+    }
 
 
 });
